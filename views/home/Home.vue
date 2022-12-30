@@ -1,21 +1,21 @@
 <template>
-
     <div style="margin-top: -60px;">
         <div class="header-warp">
-            <header><h1 style="margin-bottom: 0px; color: #fff;">dhuKG</h1><p>Knowledge Graph of K12 Education</p><span class="jcjutp">&nbsp;基础教育知识图谱&nbsp;</span></header>
-        <a-input-search
-            v-model:value="value"
-            placeholder="输入关键字"
-            enter-button
-            style="width: 540px"
-            size="large"
-            @search="showMsg"
-        />
+            <header><h1 style="margin-bottom: 0px; color: #fff;">CSKG</h1><p>Knowledge Graph of Computer Systems</p><span class="jcjutp">&nbsp;计算机系统知识图谱&nbsp;</span></header>
+            <a-row>
+                <a-col :span="12" :offset="6">
+                    <a-input-search
+                        v-model:value="value"
+                        placeholder="输入关键字"
+                        enter-button
+                        size="large"
+                        @search="showMsg"
+                    /> 
+                </a-col>
+                <a-col :span="12" :offset="6"><div style="text-align: left; font-size: small; font-weight: bold;">Computer Systems, Operating Systems, Compilers, Assembly Language, Linux System</div></a-col>
+            </a-row>
+        </div>
     </div>
-    </div>
-
-
-
 </template>
 
 <script>
@@ -37,18 +37,16 @@ export default {
         }
         
     }
-
-
 }
 </script>
 
 <style lang="less" scoped>
 .header-warp {
-    background: url(../../src/assets/background.jpg) no-repeat top;
+    background: url(../../src/assets/background.jpeg) no-repeat top;
     padding-top: 60px;
     text-align: center;
     background-position: 50%;
-    min-height: 650px;
+    min-height: 800px;
     width: 100%;
     background-size: 100%;
     background-size: cover;

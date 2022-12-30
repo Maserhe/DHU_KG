@@ -1,5 +1,5 @@
 <template>
-   <div style="width: 120px; height: 31px; margin-left: 30px; float: left; font-size: 28px; font-weight: 700; line-height: 60px;"><a href="/">dhuKG</a></div>
+   <div style="width: 120px; height: 31px; margin-left: 30px; float: left; font-size: 28px; font-weight: 700; line-height: 60px;"><a href="/">CSKG</a></div>
    <div style="line-height: 58px; position: absolute; right: 80px; cursor: pointer;">EN</div>
    <div style="line-height: 58px; position: absolute; right: 30px; cursor: pointer;">APIs</div>
 
