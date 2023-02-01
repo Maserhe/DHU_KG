@@ -1,5 +1,6 @@
 <template>
     Dashboard
+    这个没有用
   </template>
   
   <script>
