@@ -371,12 +371,19 @@ export const searchText = (text) => {
     })
 }
 
+export const searchId = (id) => {
+    return axios.request({
+        url: '/knowledge-entity/childrens?id=' + id,
+        method: 'get'
+    })
+}
+
 /**
  * 模糊查询大类
  * @param {*} name 
  */
 export const search = (name)=>{
-    console.log(name)
+    // console.log(name)
     return new Promise((resolve,reject)=>{
         let result = []
         let list = data.filter(item=>item.name.indexOf(name)>=0)
@@ -390,6 +397,14 @@ export const search = (name)=>{
         }
     })
 }
+
+export const expendNode = (id) => {
+    return axios.request({
+        url: '/knowledge-entity/childrens?id=' + id,
+        method: 'get'
+    })
+}
+
 
 export const expendNodes = (id)=>{
     return new Promise((resolve,reject)=>{

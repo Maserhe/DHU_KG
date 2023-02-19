@@ -98,10 +98,13 @@ export default {
                     this.searchContent = ""
                     return 
                 }
+                this.searchList = [json.data.data]
                 // let result = await search(text);
                 this.type = 2
-                // this.searchList = [].concat(json.data)
-                this.searchList = [json.data.data]
+
+                // console.log(result, " === +++  ")
+                // this.searchList = [].concat(result)
+                
                 // console.log(this.searchList, " ==== ")
                 //console.log(JSON.stringify(result), " === ")
             } catch (error) {
@@ -113,7 +116,7 @@ export default {
          * 初始化标签数据
          */
         initTags(){
-            const tagNames = ["人工智能","知识图谱","Linux系统","编译原理","机器人","周杰伦","东华大学","番茄","盗墓笔记","机器人","人工智能","知识图谱","姚明","刘德华","机器人","人工智能","知识图谱","姚明","刘德华","机器人","人工智能","知识图谱","姚明","刘德华","机器人","人工智能","知识图谱","姚明","刘德华","机器人"]
+            const tagNames = ["人工智能","知识图谱","Linux系统","编译原理","东华大学", "文件管理", "应用开发","人工智能","知识图谱","Linux系统","编译原理","东华大学", "文件管理", "应用开发","人工智能","知识图谱","Linux系统","编译原理","东华大学", "文件管理", "应用开发"]
             //初始化标签位置
             let tags = [];
             const length = tagNames.length
@@ -208,7 +211,6 @@ export default {
             this.initTags()
             this.$emit('windowResize')
         }
-        
     }
 }
 </script>

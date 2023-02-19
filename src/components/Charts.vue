@@ -6,7 +6,7 @@
 
 import * as echarts from "echarts"
 import {onMounted, onUnmounted} from "vue"
-import{ expendNodes,} from '../../api/data'
+import{ expendNodes, expendNode} from '../../api/data'
 
 export default {
     name:'Charts',
@@ -19,7 +19,6 @@ export default {
     watch:{
         chartList:{
             handler(val){
-                console.log(val, " ==== ")
                 this.formatData(val||[],true)
             },
         }
@@ -42,13 +41,34 @@ export default {
             // console.log(params, " ==== == ")
             const index = this.seriesData.findIndex(item=>item.id === params.data.id)
             const info = this.seriesData[index]
+
+            // console.log(JSON.stringify(this.seriesData), index, "  === ")
             if(info.isRoot) return
             if(!info.isClicked){
                 this.lastClickId = info.id
                 info.isClicked = true
                 this.seriesData.splice(index,1,info)
-                let result = await expendNodes(info.id)
+                let result = await expendNode(info.id)
+                
+                if (result.data.code != 200) {
+                    result = []
+                } else {
+                    let parentId = result.data.data.id
+                    let totalList = []
+
+
+                    for(let item of result.data.data.children){
+                        let newItem = item
+                        newItem.parentId = parentId
+                        totalList.push(newItem)
+                    }
+                    result = JSON.parse(JSON.stringify(totalList))
+                    
+                    console.log(JSON.stringify(result), " ** &&& & ")
+                }
                 this.formatData(result)
+                // console.log(JSON.stringify(result), " **** ")
+
             }else{ //已经点击过  当前点击需要折叠
                 info.isClicked = false
                 this.seriesData.splice(index,1,info)
@@ -158,6 +178,7 @@ export default {
             const data = []
             const links = []
             let target = ''
+
             if(reset){
                 this.seriesData = []
                 this.seriesLinks = []
