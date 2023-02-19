@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from '../router'
 import store from '../store'
 import http from "axios";
+import "../api/mock.js";
 
 import {
     Button,
@@ -33,7 +34,6 @@ import {
 
 const app = createApp(App)
 app.provide("$http", http)
-
 
 app.use(Button)
     .use(Layout)

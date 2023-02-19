@@ -46,7 +46,7 @@ export default {
     padding-top: 60px;
     text-align: center;
     background-position: 50%;
-    min-height: 800px;
+    min-height: 1000px;
     width: 100%;
     background-size: 100%;
     background-size: cover;
