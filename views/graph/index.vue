@@ -38,7 +38,7 @@
 import { ref } from 'vue'
 import { message } from 'ant-design-vue'
 import { onMounted } from 'vue'
-import { getData,  search } from '../../api/data'
+import { search, searchText } from '../../api/data'
 
 import Charts from "../../src/components/Charts.vue"
 
@@ -92,9 +92,17 @@ export default {
                 return
             }
             try {
-                let result = await search(text);
+                let json = await searchText(text);
+                if (json.data.code != 200) {
+                    message.info('未查询到数据,请更改查询条件')
+                    this.searchContent = ""
+                    return 
+                }
+                // let result = await search(text);
                 this.type = 2
-                this.searchList = [].concat(result)
+                // this.searchList = [].concat(json.data)
+                this.searchList = [json.data.data]
+                // console.log(this.searchList, " ==== ")
                 //console.log(JSON.stringify(result), " === ")
             } catch (error) {
                 //alert('未查询到数据,请更改查询条件')

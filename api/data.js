@@ -354,9 +354,19 @@ export const data = [
 
 ]
 
+
+
+
 export const getData = () => {
     return axios.request({
         url: '/konwledge/getData',
+        method: 'get'
+    })
+}
+
+export const searchText = (text) => {
+    return axios.request({
+        url: '/knowledge-entity/search?text='+ text,
         method: 'get'
     })
 }

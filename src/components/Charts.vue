@@ -5,14 +5,9 @@
 // 引入 ECharts 主模块
 
 import * as echarts from "echarts"
-// let echarts = require('echarts/lib/echarts');
-// // 引入柱状图
-// require('echarts/lib/chart/graph');
-// // 引入提示框和标题组件
-// require('echarts/lib/component/tooltip');
-// require('echarts/lib/component/title');
 import {onMounted, onUnmounted} from "vue"
 import{ expendNodes,} from '../../api/data'
+
 export default {
     name:'Charts',
     props:{
@@ -43,6 +38,8 @@ export default {
          * 节点点击事件
          */
         async nodeClick(params){
+
+            // console.log(params, " ==== == ")
             const index = this.seriesData.findIndex(item=>item.id === params.data.id)
             const info = this.seriesData[index]
             if(info.isRoot) return
@@ -169,7 +166,7 @@ export default {
                 const dataInfo = {
                     "id": target,
                     "name": list[0].name,
-                    category:list[0].categary,
+                    category:list[0].category,
                     isClicked:true,
                     isRoot:true,
                     symbolSize:30,
@@ -186,14 +183,14 @@ export default {
                 const dataInfo = {
                     "id": id,
                     parentId:target,
-                    category:item.categary,
+                    category:item.category,
                     "name": item.name,
                     isClicked:false,
                 }
                 data.push(dataInfo)
                 if(target!=item.id){
                     links.push({
-                        value:item.categary,
+                        value:item.category,
                         target:target,
                         source:id,
                     })

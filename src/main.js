@@ -5,6 +5,7 @@ import store from '../store'
 import http from "axios";
 import "../api/mock.js";
 
+
 import {
     Button,
     ConfigProvider,
@@ -33,7 +34,8 @@ import {
 } from 'ant-design-vue'
 
 const app = createApp(App)
-app.provide("$http", http)
+
+app.config.globalProperties.$http = http;
 
 app.use(Button)
     .use(Layout)
